@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -14,8 +15,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	bs := make([]byte, 100)
-	fileContents.Read(bs)
-	fmt.Println(string(bs))
+	io.Copy(os.Stdout, fileContents)
+
+	// bs := make([]byte, 100)
+	// fileContents.Read(bs)
+	// fmt.Println(string(bs))
 
 }
